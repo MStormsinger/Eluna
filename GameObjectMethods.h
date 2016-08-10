@@ -42,6 +42,20 @@ namespace LuaGameObject
     }
 
     /**
+     * Sets the [GameObjects]'s phase mask.
+     *
+     * @param uint32 phaseMask
+     * @param bool update = true : update visibility to nearby objects
+     */
+    int SetPhaseMask(Eluna* /*E*/, lua_State* L, GameObject* go)
+    {
+        uint32 phaseMask = Eluna::CHECKVAL<uint32>(L, 2);
+        bool update = Eluna::CHECKVAL<bool>(L, 3, true);
+        go->SetPhaseMask(phaseMask, update);
+        return 0;
+    }
+
+    /**
      * Returns 'true' if the [GameObject] is a transport
      *
      * @return bool isTransport
